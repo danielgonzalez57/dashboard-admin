@@ -7,7 +7,7 @@ const AuthRoutes = {
     children: [
       {
         name: 'Login',
-        path: '/',
+        path: '/login',
         component: () => import('@/components/LoginForm.vue')
       }
       // {

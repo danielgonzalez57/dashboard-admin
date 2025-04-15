@@ -32,19 +32,16 @@ interface AuthStore {
 }
 
 
-router.beforeEach(async (to, from, next) => {
-  // redirigir a la página de inicio de sesión si no ha iniciado sesión e intenta acceder a una página restringida
-  const publicPages = ['/'];
+router.beforeEach((to, from, next) => {
+  const auth = useAuthStore();
+  const publicPages = ['/login']; // Ruta pública (ajusta según tu estructura)
   const authRequired = !publicPages.includes(to.path);
-  const auth: AuthStore = useAuthStore();
 
-  if (to.matched.some((record) => record.meta.requiresAuth)) {
-    if (authRequired && !auth.user) {
-      auth.returnUrl = to.fullPath;
-      return next('/dashboard');
-    } else next();
+  if (authRequired && !auth.user) {
+    auth.returnUrl = to.fullPath;
+    next('/login'); // Redirige al login si no está autenticado
   } else {
-    next();
+    next(); // Permite el acceso
   }
 });
 

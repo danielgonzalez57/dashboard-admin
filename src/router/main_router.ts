@@ -3,7 +3,7 @@ const MainRoutes =   {
     meta: {
       requiresAuth: true
     },
-    component: () => import('../../pages/login/index.vue'),
+    component: () => import('../../pages/dashboard/index.vue'),
     children: [
       // VIEWS
       {

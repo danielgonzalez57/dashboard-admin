@@ -5,15 +5,20 @@ import { useAuthStore } from '@/stores/auth_login';
 import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { useColorMode } from '@vueuse/core'
 
+const mode = useColorMode()
 const username = ref<string>('');
 const password = ref<string>('');
+const authStore = useAuthStore(); 
+
+
 
 const handleLogin = async () => {
-
-  await authStore.login({ Email: username.value, Password: password.value });
-   
-  
+  await authStore.login({ 
+    Email: username.value, 
+    Password: password.value 
+  });
 };
 </script>
 <template>
@@ -26,10 +31,10 @@ const handleLogin = async () => {
           <div class="flex flex-col gap-6">
             <div class="flex flex-col items-center text-center">
               <h1 class="text-2xl font-bold">
-                Welcome back
+                Bienvenido
               </h1>
               <p class="text-balance text-muted-foreground">
-                Login to your Acme Inc account
+                Inicia sesión para continuar
               </p>
             </div>
             <div class="grid gap-2">
@@ -51,6 +56,7 @@ const handleLogin = async () => {
                 id="password" 
                 type="password" 
                 required 
+                placeholder="********"
                 v-model="password"
               />
             </div>
@@ -92,9 +98,9 @@ const handleLogin = async () => {
               </Button>
             </div>
             <div class="text-center text-sm">
-              Don't have an account?
+              No tienes una cuenta?
               <a href="#" class="underline underline-offset-4">
-                Sign up
+                Registrate
               </a>
             </div>
           </div>
@@ -105,15 +111,14 @@ const handleLogin = async () => {
           <img
             src="../assets/images/img-login.jpeg"
             alt="Image"
-            class="absolute inset-0 w-full dark:brightness-[0.2] dark:grayscale"
+            class="absolute inset-0 w-full dark:grayscale"
           >
         </div>
 
       </CardContent>
     </Card>
     <div class="text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary">
-      By clicking continue, you agree to our <a href="#">Terms of Service</a>
-      and <a href="#">Privacy Policy</a>.
+      dashboard v.5 <a href="#">Daniel corp™</a>.
     </div>
   </div>
 </template>

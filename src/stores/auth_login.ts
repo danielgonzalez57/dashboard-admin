@@ -15,40 +15,28 @@ interface User {
 export const useAuthStore = defineStore('auth', {
   state: () => ({
     user: JSON.parse(localStorage.getItem('user') as string) as User | null,
-    returnUrl: null,
+    returnUrl: null as string | null,
     error: ''
   }),
   actions: {
     async login({ Email, Password }: { Email: string, Password: string }) {
       try {
-        // const response = await axios.post(`${dataBaseUrl}/login`, { Email, Password });
-    
-        // if (response.data) {
-        if (Email == 'daniel@daniel.com' && Password == '12345') {
-          const response = {
-            email: Email,
-            password: Password,
-          }
-
-          // this.user = response.data;
-          this.user = response as unknown as User;
+        // Credenciales de prueba
+        if (Email === 'daniel@daniel.com' && Password === '12345') {
+          this.user = {
+            ID_User: 1,
+            Nombre: 'Daniel',
+            Email: Email,
+            ID_Rol: 1,
+            Token: 'fake-token-123' // Simula un token
+          };
           localStorage.setItem('user', JSON.stringify(this.user));
           router.push(this.returnUrl || '/dashboard');
         } else {
-          this.setError('Usuario o contraseña incorrectas');
+          this.setError('Credenciales incorrectas');
         }
       } catch (error) {
-        
-        // if (error instanceof Error) {
-
-        //   if (axios.isAxiosError(error) && error.response && error.response.status === 403) {
-        //     this.setError('Usuario o contraseña incorrectas');
-        //   } else {
-        //     this.setError('Error al intentar iniciar sesión');
-        //   }
-        // } else {
-        //   this.setError('Error desconocido');
-        // }
+        this.setError('Error en el login');
       }
     },
     setError(message: string) {
