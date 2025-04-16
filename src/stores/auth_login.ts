@@ -9,7 +9,7 @@ interface User {
   Nombre: string;
   Email: string;
   ID_Rol: number;
-  Token: string;
+  Token: string; 
 }
 
 export const useAuthStore = defineStore('auth', {

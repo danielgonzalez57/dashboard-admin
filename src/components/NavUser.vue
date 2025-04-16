@@ -39,9 +39,16 @@ const props = defineProps<{
 import { Button } from '@/components/ui/button'
 import { Icon } from '@iconify/vue'
 import { useColorMode } from '@vueuse/core'
+import { useAuthStore } from '@/stores/auth_login';
 
 const mode = useColorMode()
 const { isMobile } = useSidebar()
+const authStore = useAuthStore(); 
+
+
+const logout = async () => {
+  authStore.logout();
+};
 </script>
 
 <template>
@@ -104,13 +111,13 @@ const { isMobile } = useSidebar()
               <CreditCard />
               Billing
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem> 
               <Bell />
               Notifications
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
+          <DropdownMenuItem @click="logout" class="cursor-pointer">
             <LogOut />
             Log out
           </DropdownMenuItem>

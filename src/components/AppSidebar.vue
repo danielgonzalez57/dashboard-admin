@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { SidebarProps } from '@/components/ui/sidebar'
-
 import NavMain from '@/components/NavMain.vue'
 import NavProjects from '@/components/NavProjects.vue'
 import NavUser from '@/components/NavUser.vue'
@@ -39,17 +38,17 @@ const data = {
   },
   teams: [
     {
-      name: 'Admin Inc',
+      name: 'StockWiz',
       logo: GalleryVerticalEnd,
       plan: 'Pro',
     },
     {
-      name: 'Admin Corp.',
+      name: 'StockWiz Corp.',
       logo: AudioWaveform,
       plan: 'Mid',
     },
     {
-      name: 'Shopping Corp.',
+      name: 'StockWiz Corp.',
       logo: Command,
       plan: 'Basic',
     },

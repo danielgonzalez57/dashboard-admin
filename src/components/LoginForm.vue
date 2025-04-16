@@ -98,7 +98,7 @@ const handleLogin = async () => {
               </Button>
             </div>
             <div class="text-center text-sm">
-              No tienes una cuenta?
+              No tienes una cuenta? 
               <a href="#" class="underline underline-offset-4">
                 Registrate
               </a>
